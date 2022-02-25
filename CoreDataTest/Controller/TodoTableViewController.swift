@@ -53,5 +53,26 @@ class TodoTableViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func saveItem() {
+        do {
+            try context.save()
+        }
+        catch {
+            print("Error saving Item, \(error)")
+        }
+        tableView.reloadData()
+    }
     
+    func loadItem() {
+        
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        
+        do {
+            arrayItems = try context.fetch(request)
+        }
+        catch {
+            print("Error fetching data from Item, \(error)")
+        }
+        tableView.reloadData()
+    }
 }
