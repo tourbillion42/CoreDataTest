@@ -51,7 +51,10 @@ class TodoTableViewController: UITableViewController {
             
             let newItem = Item(context: self.context)
             newItem.name = textField.text!
+            newItem.parentCategory = self.selectedCategory
             
+            self.arrayItems.append(newItem)
+            self.saveItem()
         }
         alert.addAction(action)
         alert.addTextField { (field) in
@@ -71,7 +74,17 @@ class TodoTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    func loadItem(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
+    func loadItem(with request: NSFetchRequest<Item> = Item.fetchRequest(), predicate: NSPredicate? = nil) {
+        
+        let categoryPredicate = NSPredicate(format: "parentCategory.title MATCHES %@", selectedCategory!.title!)
+        
+        if let addtionalPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, addtionalPredicate])
+        }
+        else {
+            request.predicate = categoryPredicate
+        }
+        
         do {
             arrayItems = try context.fetch(request)
         }
@@ -87,10 +100,10 @@ extension TodoTableViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         let request: NSFetchRequest<Item> = Item.fetchRequest()
-        request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchBar.text!)
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         
-        loadItem(with: request)
+        loadItem(with: request, predicate: predicate)
         
         searchBar.endEditing(true)
     }
