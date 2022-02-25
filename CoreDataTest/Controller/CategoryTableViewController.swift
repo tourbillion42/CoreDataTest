@@ -57,4 +57,26 @@ class CategoryTableViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func saveCategory() {
+        do {
+            try context.save()
+        }
+        catch {
+            print("Error saving category, \(error)")
+        }
+        tableView.reloadData()
+    }
+    
+    func loadCategory() {
+        
+        let request: NSFetchRequest<Catego> = Catego.fetchRequest()
+        
+        do {
+            categories = try context.fetch(request)
+        }
+        catch {
+            print("Error fetching data from category, \(error)")
+        }
+        tableView.reloadData()
+    }
 }
