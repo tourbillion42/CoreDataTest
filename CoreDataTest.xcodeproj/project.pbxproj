@@ -14,6 +14,7 @@
 		4703C89027C92374005C9F4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4703C88F27C92374005C9F4B /* Assets.xcassets */; };
 		4703C89327C92374005C9F4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4703C89127C92374005C9F4B /* LaunchScreen.storyboard */; };
 		4703C89E27C923C1005C9F4B /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4703C89D27C923C1005C9F4B /* CategoryTableViewController.swift */; };
+		4703C8A027C92C36005C9F4B /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4703C89F27C92C36005C9F4B /* TodoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4703C89227C92374005C9F4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4703C89427C92374005C9F4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4703C89D27C923C1005C9F4B /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		4703C89F27C92C36005C9F4B /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				4703C89D27C923C1005C9F4B /* CategoryTableViewController.swift */,
+				4703C89F27C92C36005C9F4B /* TodoTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4703C88E27C92372005C9F4B /* CoreDataTest.xcdatamodeld in Sources */,
+				4703C8A027C92C36005C9F4B /* TodoTableViewController.swift in Sources */,
 				4703C88427C92372005C9F4B /* AppDelegate.swift in Sources */,
 				4703C88627C92372005C9F4B /* SceneDelegate.swift in Sources */,
 				4703C89E27C923C1005C9F4B /* CategoryTableViewController.swift in Sources */,
