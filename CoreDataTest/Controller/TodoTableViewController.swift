@@ -35,4 +35,23 @@ class TodoTableViewController: UITableViewController {
         return cell
     }
     
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Add a new Item", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+            
+            let newItem = Item(context: self.context)
+            newItem.name = textField.text!
+            
+        }
+        alert.addAction(action)
+        alert.addTextField { (field) in
+            textField = field
+            textField.placeholder = "Add a new"
+        }
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
 }
