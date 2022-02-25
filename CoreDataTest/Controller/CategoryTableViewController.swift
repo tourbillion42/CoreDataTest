@@ -20,6 +20,8 @@ class CategoryTableViewController: UITableViewController {
         navigationItem.title = "Category"
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+        loadCategory()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,6 +49,7 @@ class CategoryTableViewController: UITableViewController {
             newCategory.title = textField.text!
             
             self.categories.append(newCategory)
+            self.saveCategory()
         }
         
         alert.addAction(action)
