@@ -30,7 +30,13 @@
                             <outlet property="delegate" destination="156-fw-ov3" id="gUm-su-8SP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Qnt-Up-Zyc"/>
+                    <navigationItem key="navigationItem" id="Qnt-Up-Zyc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Qgs-2X-ad5">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="156-fw-ov3" id="KhF-X4-wAA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKG-or-2oP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
