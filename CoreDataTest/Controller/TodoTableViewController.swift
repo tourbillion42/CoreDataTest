@@ -13,9 +13,17 @@ class TodoTableViewController: UITableViewController {
     var arrayItems: [Item] = []
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var selectedCategory: Catego? {
+        didSet {
+            loadItem()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "TodoItems"
 
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
@@ -63,10 +71,7 @@ class TodoTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    func loadItem() {
-        
-        let request: NSFetchRequest<Item> = Item.fetchRequest()
-        
+    func loadItem(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
         do {
             arrayItems = try context.fetch(request)
         }
@@ -74,5 +79,29 @@ class TodoTableViewController: UITableViewController {
             print("Error fetching data from Item, \(error)")
         }
         tableView.reloadData()
+    }
+}
+
+extension TodoTableViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchBar.text!)
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        loadItem(with: request)
+        
+        searchBar.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadItem()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
     }
 }

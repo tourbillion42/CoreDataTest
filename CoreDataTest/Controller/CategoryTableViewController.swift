@@ -19,8 +19,6 @@ class CategoryTableViewController: UITableViewController {
         
         navigationItem.title = "Category"
         
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
         loadCategory()
     }
     
@@ -84,7 +82,6 @@ class CategoryTableViewController: UITableViewController {
     }
     
     func loadCategory() {
-        
         let request: NSFetchRequest<Catego> = Catego.fetchRequest()
         
         do {
