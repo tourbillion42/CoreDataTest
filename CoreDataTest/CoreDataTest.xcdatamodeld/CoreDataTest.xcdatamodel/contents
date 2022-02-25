@@ -2,8 +2,14 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Catego" representedClassName="Catego" syncable="YES" codeGenerationType="class">
         <attribute name="title" attributeType="String"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="parentCategory" inverseEntity="Item"/>
+    </entity>
+    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="parentCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Catego" inverseName="items" inverseEntity="Catego"/>
     </entity>
     <elements>
-        <element name="Catego" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="Catego" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="Item" positionX="163.713134765625" positionY="97.590576171875" width="128" height="73"/>
     </elements>
 </model>
